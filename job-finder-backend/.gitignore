@@ -1,0 +1,6 @@
+node_modules/
+.env
+src/resolvers/job-query.txt
+src/schema/queries-auth.txt
+abc.txt
+.DS_Store
