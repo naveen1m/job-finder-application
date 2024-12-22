@@ -6,8 +6,8 @@ import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 const TOKEN = localStorage.getItem("token") || "token";
 
 const client = new ApolloClient({
-  // uri: 'https://job-finder-app-e43f.onrender.com/graphql',
-  uri: "http://localhost:3000/graphql",
+  uri: "https://job-finder-backend-wb65.onrender.com/graphql",
+  // uri: "http://localhost:3000/graphql",
   headers: {
     Authorization: `JWT ${TOKEN}`,
   },
