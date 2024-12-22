@@ -12,7 +12,7 @@ const Navbar = () => {
   return (
     <div className="navbar bg-white px-4">
       <div className="flex items-center space-x-2">
-        <img src="./../../public/icon.png" alt="logo" className="h-8 w-8" />
+        <img src="/icon.png" alt="logo" className="h-8 w-8" />
         <h1
           className="text-xl font-extrabold text-gray-800 cursor-pointer"
           onClick={() => {
