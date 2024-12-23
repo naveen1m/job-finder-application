@@ -72,7 +72,7 @@ const JobDetails = () => {
     navigate("/jobs");
   };
 
-  if (loading) return <p>Loading job details...</p>;
+  if (loading) return <p className="animate-pulse">Loading job details...</p>;
   if (error) return <p>Error loading job details. Please try again later.</p>;
 
   const job = data.getJobById;

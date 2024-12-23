@@ -59,7 +59,7 @@ const JobListing = () => {
     }
   };
 
-  if (loading) return <p>Loading jobs...</p>;
+  if (loading) return <p className="animate-pulse">Loading jobs...</p>;
   if (error) return <p>Error loading jobs. Please try again later.</p>;
 
   return (

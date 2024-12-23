@@ -19,7 +19,8 @@ const GET_JOBS_POSTED_BY_POSTER = gql`
 const JobsPostedByPoster = () => {
   const { loading, error, data } = useQuery(GET_JOBS_POSTED_BY_POSTER);
 
-  if (loading) return <p>Loading jobs posted by you...</p>;
+  if (loading)
+    return <p className="animate-pulse">Loading jobs posted by you...</p>;
   if (error) return <p>Error fetching jobs. Please try again later.</p>;
 
   const jobs = data?.getJobsPostedByPoster || [];

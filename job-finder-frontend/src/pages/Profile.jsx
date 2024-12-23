@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { useQuery, useMutation } from '@apollo/client';
-import { gql } from 'graphql-tag';
-import { useNavigate } from 'react-router-dom';
-import JobsApplied from "./JobsApplied"
-import JobsPosted from "./JobsPosted"
+import React, { useState } from "react";
+import { useQuery, useMutation } from "@apollo/client";
+import { gql } from "graphql-tag";
+import { useNavigate } from "react-router-dom";
+import JobsApplied from "./JobsApplied";
+import JobsPosted from "./JobsPosted";
 
 // GraphQL Query to Fetch User by ID
 const GET_USER_BY_ID = gql`
@@ -20,7 +20,7 @@ const GET_USER_BY_ID = gql`
 // GraphQL Mutation to Update User Profile
 const UPDATE_USER_PROFILE = gql`
   mutation UpdateUserProfile($id: ID!, $username: String!, $email: String!) {
-    updateUserProfile(id : $id, username: $username, email: $email) {
+    updateUserProfile(id: $id, username: $username, email: $email) {
       id
       username
       email
@@ -29,7 +29,6 @@ const UPDATE_USER_PROFILE = gql`
 `;
 
 const ProfilePage = () => {
-
   const userId = localStorage.getItem("userId");
 
   const { loading, error, data, refetch } = useQuery(GET_USER_BY_ID, {
@@ -81,7 +80,7 @@ const ProfilePage = () => {
     setFormData({ username: "", email: "" });
   };
 
-  if (loading) return <p>Loading your profile...</p>;
+  if (loading) return <p className="animate-pulse">Loading your profile...</p>;
   if (error) return <p>Error loading profile. Please try again later.</p>;
 
   const user = data.getUserById;
@@ -92,7 +91,9 @@ const ProfilePage = () => {
     <div className="p-6 bg-gray-100 min-h-screen">
       <div className="w-full mx-auto bg-white p-8 rounded-2xl shadow-xl max-w-lg">
         <div className="flex justify-between items-center mb-8">
-          <h1 className="text-2xl font-extrabold text-gray-800">Your Profile</h1>
+          <h1 className="text-2xl font-extrabold text-gray-800">
+            Your Profile
+          </h1>
           <button
             onClick={handleEdit}
             className="bg-blue-600 text-white p-3 rounded-3xl text-lg shadow-lg hover:bg-blue-700 transition duration-300"
@@ -104,7 +105,9 @@ const ProfilePage = () => {
         {isEditing ? (
           <div className="space-y-6">
             <div className="p-6 border border-gray-300 rounded-xl bg-gray-100 shadow-md hover:shadow-xl transition-shadow">
-              <label className="font-semibold text-gray-700 text-xl">Username:</label>
+              <label className="font-semibold text-gray-700 text-xl">
+                Username:
+              </label>
               <input
                 type="text"
                 name="username"
@@ -114,7 +117,9 @@ const ProfilePage = () => {
               />
             </div>
             <div className="p-6 border border-gray-300 rounded-xl bg-gray-100 shadow-md hover:shadow-xl transition-shadow">
-              <label className="font-semibold text-gray-700 text-xl">Email:</label>
+              <label className="font-semibold text-gray-700 text-xl">
+                Email:
+              </label>
               <input
                 type="email"
                 name="email"
@@ -154,11 +159,8 @@ const ProfilePage = () => {
             </div>
           </div>
         )}
-
       </div>
-      {
-        role === "seeker" ? <JobsApplied /> : <JobsPosted />
-      }
+      {role === "seeker" ? <JobsApplied /> : <JobsPosted />}
     </div>
   );
 };
