@@ -36,6 +36,7 @@ const HAS_USER_APPLIED_FOR_JOB = gql`
 const JobDetails = () => {
   const { jobId } = useParams();
   const [applicationStatus, setApplicationStatus] = useState(null);
+  const token = localStorage.getItem("token");
 
   const {
     loading: appliedLoading,
@@ -68,8 +69,12 @@ const JobDetails = () => {
   });
 
   const handleApply = async () => {
-    await applyForJob({ variables: { jobId } });
-    navigate("/jobs");
+    if (!token) {
+      navigate("/login");
+    } else {
+      await applyForJob({ variables: { jobId } });
+      navigate("/jobs");
+    }
   };
 
   if (loading) return <p className="animate-pulse">Loading job details...</p>;

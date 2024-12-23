@@ -25,7 +25,7 @@ const JobsApplied = () => {
   const appliedJobs = data?.getJobsAppliedBySeeker || [];
 
   return (
-    <div className="p-8 px-2 bg-gray-100 min-h-screen">
+    <div className="p-8 px-2 min-h-screen w-full ">
       <div className="w-full max-w-4xl mx-auto bg-white p-6 rounded-lg shadow-md">
         <h1 className="text-3xl font-bold text-gray-800 mb-6">Applied Jobs</h1>
         {appliedJobs.length > 0 ? (
