@@ -81,14 +81,20 @@ const ProfilePage = () => {
   };
 
   if (loading) return <p className="animate-pulse">Loading your profile...</p>;
-  if (error) return <p>Error loading profile. Please try again later.</p>;
+  if (error)
+    return (
+      <p>
+        Error loading profile. Please try again later. There may be server
+        loading error.
+      </p>
+    );
 
   const user = data.getUserById;
 
   const { role } = user;
 
   return (
-    <div className="p-6 bg-gray-100 min-h-screen">
+    <div className="p-6 min-h-screen mt-14">
       <div className="w-full mx-auto bg-white p-8 rounded-2xl shadow-xl max-w-lg">
         <div className="flex justify-between items-center mb-8">
           <h1 className="text-2xl font-extrabold text-gray-800">
@@ -103,7 +109,7 @@ const ProfilePage = () => {
         </div>
 
         {isEditing ? (
-          <div className="space-y-6">
+          <div className="space-y-4">
             <div className="p-6 border border-gray-300 rounded-xl bg-gray-100 shadow-md hover:shadow-xl transition-shadow">
               <label className="font-semibold text-gray-700 text-xl">
                 Username:
