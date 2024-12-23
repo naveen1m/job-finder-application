@@ -7,16 +7,20 @@ const Hero = () => {
   return (
     <div className="min-h-screen w-screen flex">
       <div
-        className="hero bg-[url('/homepage.jpg')]  
-      bg-[position:bottom_-1rem_center] bg-clip-content  bg-slate-400"
+        className="hero lg:bg-[url('/homepage.jpg')]  
+      bg-[position:bottom_-1rem_center] bg-clip-content    md:bg-slate-400"
       >
         <div className="hero-content text-center">
           <div className="max-w-md">
-            <h1 className="text-6xl font-extrabold tracking-wide subpixel-antialiased  leading-tight mb-4 text-[#f79256]   ">
-              {/* f79256 */}
-              Empower Your Career Path!
-            </h1>
-
+            <div className="">
+              <h1
+                className="text-6xl font-extrabold tracking-wide 
+              subpixel-antialiased  leading-tight mb-4 text-[#f79256] brightness-100   "
+              >
+                {/* f79256 f79256 */}
+                Empower Your Career Path!
+              </h1>
+            </div>
             <p className="text-lg mb-6 text-[#00171f]">
               Unlock limitless opportunities with our seamless job posting
               platform. From finding the right talent to managing applications

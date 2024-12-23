@@ -10,7 +10,7 @@ const Navbar = () => {
   const isSeeker = role === "seeker";
 
   return (
-    <div className="navbar fixed bg-white px-4 shadow-lg rounded-lg">
+    <div className="navbar fixed bg-white px-4 shadow-lg rounded-lg z-50 ">
       <div className="flex items-center space-x-2">
         <img src="/icon.png" alt="logo" className="h-8 w-8" />
         <h1
