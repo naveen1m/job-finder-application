@@ -38,6 +38,8 @@ const JobDetails = () => {
   const { jobId } = useParams();
   const [applicationStatus, setApplicationStatus] = useState(null);
   const token = localStorage.getItem("token");
+  const role = localStorage.getItem("role");
+  const isSeeker = role === "seeker";
 
   const {
     loading: appliedLoading,
@@ -113,17 +115,19 @@ const JobDetails = () => {
         </div>
 
         {/* Apply Button */}
-        <button
-          disabled={alreadyApplied}
-          onClick={handleApply}
-          className={`mt-6 px-6 py-3 ${
-            alreadyApplied ? "bg-gray-400" : "bg-blue-600"
-          } text-white rounded-lg text-lg w-full transition-all duration-200 hover:${
-            alreadyApplied ? "bg-gray-500" : "bg-blue-700"
-          } ${alreadyApplied ? "cursor-not-allowed" : "cursor-pointer"}`}
-        >
-          {alreadyApplied ? "Already Applied" : "Apply for Job"}
-        </button>
+        {isSeeker && (
+          <button
+            disabled={alreadyApplied}
+            onClick={handleApply}
+            className={`mt-6 px-6 py-3 ${
+              alreadyApplied ? "bg-gray-400" : "bg-blue-600"
+            } text-white rounded-lg text-lg w-full transition-all duration-200 hover:${
+              alreadyApplied ? "bg-gray-500" : "bg-blue-700"
+            } ${alreadyApplied ? "cursor-not-allowed" : "cursor-pointer"}`}
+          >
+            {alreadyApplied ? "Already Applied" : "Apply for Job"}
+          </button>
+        )}
 
         {/* Application Status */}
         {applicationStatus && (

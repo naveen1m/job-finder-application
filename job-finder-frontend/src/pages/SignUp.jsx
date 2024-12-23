@@ -66,16 +66,6 @@ const Signup = () => {
     }
   };
 
-  //   const notify = () =>
-  //     toast.promise(
-  //       handleSubmit,
-  //       {
-  //         pending: "wait for few seconds",
-  //         success: "please login!",
-  //         error: "Oops!",
-  //       },
-  //       { transition: Slide }
-  //     );
   return (
     <div className="w-full max-w-md p-6 bg-white shadow-md rounded-md">
       <h2 className="text-2xl font-bold text-center text-gray-700">Sign Up</h2>
@@ -138,7 +128,6 @@ const Signup = () => {
           type="submit"
           className="w-full px-4 py-2 text-white bg-blue-500 rounded-md hover:bg-blue-600"
           disabled={loading}
-          onClick={notify}
         >
           {loading && !isEmpty ? "Signing up..." : "Sign Up"}
         </button>
