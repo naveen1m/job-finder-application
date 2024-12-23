@@ -13,11 +13,19 @@ const getAllSeekersEmails = async () => {
   const seekers = await User.find({ role: "seeker" });
   return seekers.map((seeker) => seeker.email);
 };
-
+const convertToTitleCase = (location) => {
+  const titleCaseLocation = location
+    ?.toLowerCase()
+    ?.split(" ")
+    ?.map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+  return titleCaseLocation;
+};
 module.exports = {
   Query: {
     getJobs: async (_, { location, ctcRange }) => {
       const filter = {};
+      location = convertToTitleCase(location);
       if (location) filter.location = location;
       if (ctcRange)
         filter.ctc = {
