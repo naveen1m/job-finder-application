@@ -20,6 +20,7 @@ const Login = () => {
     email: "",
     password: "",
   });
+  const [isEmpty, setIsEmpty] = useState(false);
 
   const [login, { loading, error }] = useMutation(LOGIN_MUTATION);
 
@@ -32,6 +33,9 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!formData.email || !formData.password) {
+      setIsEmpty(true);
+    }
     try {
       const { data } = await login({ variables: formData });
       console.log("Login Successful:", data.login);
@@ -85,8 +89,9 @@ const Login = () => {
           className="w-full px-4 py-2 text-white bg-blue-500 rounded-md hover:bg-blue-600"
           disabled={loading}
         >
-          {loading ? "Logging in..." : "Login"}
+          {loading && !isEmpty ? "Logging in..." : "Login"}
         </button>
+        {isEmpty && <p className="text-red-500">All fields are required!</p>}
       </form>
       <p className="mt-4 text-sm text-center text-gray-600">
         Don't have an account?{" "}

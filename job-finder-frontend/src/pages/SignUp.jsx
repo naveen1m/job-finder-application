@@ -33,6 +33,7 @@ const Signup = () => {
     password: "",
     role: "seeker", // Default role
   });
+  const [isEmpty, setIsEmpty] = useState(false);
 
   const [signUp, { loading, error }] = useMutation(SIGNUP_MUTATION);
 
@@ -43,6 +44,14 @@ const Signup = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (
+      !formData.username ||
+      !formData.email ||
+      !formData.password ||
+      !formData.role
+    ) {
+      setIsEmpty(true);
+    }
     try {
       const { data } = await signUp({ variables: formData });
       console.log("Signup Successful:", data.signUp);
@@ -117,8 +126,9 @@ const Signup = () => {
           className="w-full px-4 py-2 text-white bg-blue-500 rounded-md hover:bg-blue-600"
           disabled={loading}
         >
-          {loading ? "Signing up..." : "Sign Up"}
+          {loading && !isEmpty ? "Signing up..." : "Sign Up"}
         </button>
+        {isEmpty && <p className="text-red-500">All fields are required!</p>}
       </form>
       <p className="mt-4 text-sm text-center text-gray-600">
         Already have an account?{" "}
