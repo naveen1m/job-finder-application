@@ -112,7 +112,7 @@ const JobListing = () => {
         <div className="w-full md:col-span-1">
           <button
             onClick={handleApplyFilters}
-            className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-600 w-full"
+            className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 ease-in delay-150 duration-200 w-full"
           >
             Apply Filters
           </button>

@@ -23,26 +23,27 @@ const Navbar = () => {
         </h1>
       </div>
 
-      {token && (
-        <div className="flex items-center space-x-4 ml-auto">
-          <div className="flex justify-end">
-            <button
-              onClick={() => {
-                navigate(isSeeker ? "/jobs" : "/jobs/post");
-              }}
-              className="bg-blue-600 text-white px-4 py-2 rounded-md"
-            >
-              {isSeeker ? "View Jobs" : "Post Job"}{" "}
-            </button>
-          </div>
-          {/* Profile Icon */}
+      <div className="flex items-center space-x-4 ml-auto">
+        <div className="flex justify-end">
+          <button
+            onClick={() => {
+              navigate(!token ? "/login" : isSeeker ? "/jobs" : "/jobs/post");
+            }}
+            className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 ease-in delay-150 duration-200"
+          >
+            {!token ? "Sign in" : isSeeker ? "View Jobs" : "Post Job"}{" "}
+          </button>
+        </div>
+
+        {/* Profile Icon */}
+        {token && (
           <div className="dropdown dropdown-end">
             <div
               tabIndex={0}
               role="button"
               className="btn btn-ghost btn-circle avatar"
             >
-              <div className="w-10 rounded-full">
+              <div className="w-10 rounded-full hover:border-stone-900 ">
                 <img
                   alt="Tailwind CSS Navbar component"
                   src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
@@ -79,8 +80,8 @@ const Navbar = () => {
               )}
             </ul>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 };
