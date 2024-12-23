@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { gql, useMutation } from "@apollo/client";
 import { Link } from "react-router-dom";
+import { toast, Slide } from "react-toastify";
 
 // GraphQL Signup Mutation
 const SIGNUP_MUTATION = gql`
@@ -56,13 +57,25 @@ const Signup = () => {
       const { data } = await signUp({ variables: formData });
       console.log("Signup Successful:", data.signUp);
 
+      toast.success("Please login!", { transition: Slide });
       // navigate to login
       window.location.href = "/login";
     } catch (err) {
       console.error("Signup Error:", err);
+      toast.error("Oops! try again.", { transition: Slide });
     }
   };
 
+  //   const notify = () =>
+  //     toast.promise(
+  //       handleSubmit,
+  //       {
+  //         pending: "wait for few seconds",
+  //         success: "please login!",
+  //         error: "Oops!",
+  //       },
+  //       { transition: Slide }
+  //     );
   return (
     <div className="w-full max-w-md p-6 bg-white shadow-md rounded-md">
       <h2 className="text-2xl font-bold text-center text-gray-700">Sign Up</h2>
@@ -125,6 +138,7 @@ const Signup = () => {
           type="submit"
           className="w-full px-4 py-2 text-white bg-blue-500 rounded-md hover:bg-blue-600"
           disabled={loading}
+          onClick={notify}
         >
           {loading && !isEmpty ? "Signing up..." : "Sign Up"}
         </button>

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useQuery, useMutation } from "@apollo/client";
 import { gql } from "graphql-tag";
 import { useNavigate } from "react-router-dom";
+import { Slide, toast } from "react-toastify";
 
 // GraphQL Query to Fetch User by ID
 const GET_USER_BY_ID = gql`
@@ -86,9 +87,11 @@ const ProfileSeeker = () => {
         },
       });
       setIsEditing(false);
+      toast.success("Updated!", { transition: Slide });
       refetch(); // Refetch the user details after updating
     } catch (err) {
       console.error("Error updating profile:", err);
+      toast.error("Error!", { transition: Slide });
     }
   };
 

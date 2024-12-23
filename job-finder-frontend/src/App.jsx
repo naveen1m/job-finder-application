@@ -1,5 +1,7 @@
 import React, { Fragment } from "react";
 import "./index.css";
+import { ToastContainer, toast, Slide } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import {
   BrowserRouter as Router,
@@ -35,6 +37,7 @@ const MainLayout = () => {
     <>
       {showNavbar && <Navbar />}
       <div className="min-h-screen min-w-screen flex items-center justify-center bg-[#FAF9F6] ">
+        <ToastContainer position="top-right" autoClose={2000} />
         <Routes>
           <Route path="/" element={<Hero />} />
           <Route path="/login" element={<Login />} />

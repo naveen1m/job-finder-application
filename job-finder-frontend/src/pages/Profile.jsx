@@ -4,6 +4,7 @@ import { gql } from "graphql-tag";
 import { useNavigate } from "react-router-dom";
 import JobsApplied from "./JobsApplied";
 import JobsPosted from "./JobsPosted";
+import { Slide, toast } from "react-toastify";
 
 // GraphQL Query to Fetch User by ID
 const GET_USER_BY_ID = gql`
@@ -69,9 +70,11 @@ const ProfilePage = () => {
         },
       });
       setIsEditing(false);
+      toast.success("Profile updated!", { transition: Slide });
       refetch(); // Refetch the user details after updating
     } catch (err) {
       console.error("Error updating profile:", err);
+      toast.error("Error!", { transition: Slide });
     }
   };
 

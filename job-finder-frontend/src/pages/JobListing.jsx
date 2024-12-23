@@ -50,9 +50,6 @@ const JobListing = () => {
       const { data } = await refetch({
         location: filters.location || null,
         ctcRange: `${filters.minCTC || 0}-${filters.maxCTC || 100000}`,
-        // filters.minCTC && filters.maxCTC
-        //   ? `${filters.minCTC}-${filters.maxCTC}`
-        //   : null,
       });
       setJobResults(data.getJobs);
     } catch (error) {

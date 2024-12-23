@@ -40,7 +40,7 @@ const JobApplicants = () => {
   const applicants = data?.getJobApplicants || [];
 
   return (
-    <div className="p-8 bg-gray-100 min-h-screen">
+    <div className="p-8 bg-[#FAF9F6] pt-20 min-h-screen">
       <div className="max-w-4xl mx-auto bg-white p-6 rounded-lg shadow-md">
         <h1 className="text-3xl font-bold text-gray-800 mb-6">
           Job Applicants

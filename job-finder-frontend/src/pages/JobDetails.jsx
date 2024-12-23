@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useQuery, useMutation } from "@apollo/client";
 import { gql } from "graphql-tag";
 import { useNavigate, useParams } from "react-router-dom";
+import { toast, Slide } from "react-toastify";
 
 // GraphQL Queries and Mutations
 const GET_JOB_BY_ID = gql`
@@ -46,11 +47,12 @@ const JobDetails = () => {
   } = useQuery(HAS_USER_APPLIED_FOR_JOB, {
     variables: { jobId },
   });
-
+  const isalreadyApplied = appliedData?.hasUserAppliedForJob;
+  const [alreadyApplied, setAlreadyApplied] = useState(isalreadyApplied);
   refetch();
 
-  const alreadyApplied = appliedData?.hasUserAppliedForJob;
-
+  console.log("applied", isalreadyApplied, alreadyApplied);
+  // setAlreadyApplied(isalreadyApplied);
   const navigate = useNavigate();
 
   // Fetch job details
@@ -70,9 +72,12 @@ const JobDetails = () => {
 
   const handleApply = async () => {
     if (!token) {
+      toast.info("Login first!", { transitiion: Slide });
       navigate("/login");
     } else {
       await applyForJob({ variables: { jobId } });
+      toast.success("Applied!", { transition: Slide });
+      setAlreadyApplied(true);
       navigate("/jobs");
     }
   };

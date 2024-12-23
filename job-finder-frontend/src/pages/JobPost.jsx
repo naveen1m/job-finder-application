@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { gql } from "graphql-tag";
 import { useNavigate } from "react-router-dom";
+import { Slide, toast } from "react-toastify";
 
 // GraphQL Mutation for Posting a Job
 const POST_JOB = gql`
@@ -76,9 +77,11 @@ const JobPost = () => {
         ctc: "",
         location: "",
       });
+      toast.success("Job posted successfully!", { transition: Slide });
       navigate("/profile");
     } catch (error) {
       setErrorMessage("Failed to post the job. Please try again.");
+      toast.error("Failed to post!", { transition: Slide });
     }
   };
 

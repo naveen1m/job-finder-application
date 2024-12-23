@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { gql, useMutation } from "@apollo/client";
 import { Link, useNavigate } from "react-router-dom";
+import { toast, Slide } from "react-toastify";
 
 // GraphQL Login Mutation
 const LOGIN_MUTATION = gql`
@@ -40,6 +41,7 @@ const Login = () => {
       const { data } = await login({ variables: formData });
       console.log("Login Successful:", data.login);
 
+      toast.success("Welcome back!", { transition: Slide });
       // Save token or handle authentication logic
       localStorage.clear();
 
@@ -50,6 +52,7 @@ const Login = () => {
       navigate("/jobs");
     } catch (err) {
       console.error("Login Error:", err);
+      toast.error("Oops! try again.", { transition: slide });
     }
   };
 
