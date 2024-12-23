@@ -45,13 +45,14 @@ const JobListing = () => {
   };
 
   const handleApplyFilters = async () => {
+    console.log(filters);
     try {
       const { data } = await refetch({
         location: filters.location || null,
-        ctcRange:
-          filters.minCTC && filters.maxCTC
-            ? `${filters.minCTC}-${filters.maxCTC}`
-            : null,
+        ctcRange: `${filters.minCTC || 0}-${filters.maxCTC || 100000}`,
+        // filters.minCTC && filters.maxCTC
+        //   ? `${filters.minCTC}-${filters.maxCTC}`
+        //   : null,
       });
       setJobResults(data.getJobs);
     } catch (error) {
@@ -63,8 +64,8 @@ const JobListing = () => {
   if (error) return <p>Error loading jobs. Please try again later.</p>;
 
   return (
-    <div className="p-6 bg-gray-100 min-h-screen">
-      <h1 className="text-3xl font-bold mb-4 text-gray-700">Job Listings</h1>
+    <div className="p-6 bg-[#FAF9F6] min-h-screen pt-20">
+      {/* <h1 className="text-3xl font-bold mb-4 text-gray-700">Job Listings</h1> */}
 
       <div className="mb-6 bg-white p-4 rounded-md shadow-md grid grid-cols-1 md:grid-cols-5 gap-4 items-end">
         <div className="w-full md:col-span-2">
@@ -87,8 +88,8 @@ const JobListing = () => {
           </label>
           <input
             type="text"
-            name="minSalary"
-            value={filters.minSalary}
+            name="minCTC"
+            value={filters.minCTC}
             onChange={handleFilterChange}
             placeholder="Enter min salary"
             className="mt-1 block w-full p-2 border border-gray-300 bg-white text-black rounded-md focus:ring focus:ring-blue-200 focus:outline-none"
@@ -101,8 +102,8 @@ const JobListing = () => {
           </label>
           <input
             type="text"
-            name="maxSalary"
-            value={filters.maxSalary}
+            name="maxCTC"
+            value={filters.maxCTC}
             onChange={handleFilterChange}
             placeholder="Enter max salary"
             className="mt-1 block w-full p-2 border border-gray-300 bg-white text-black rounded-md focus:ring focus:ring-blue-200 focus:outline-none"
