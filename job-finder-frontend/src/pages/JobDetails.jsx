@@ -78,7 +78,7 @@ const JobDetails = () => {
   const job = data.getJobById;
 
   return (
-    <div className="w-full min-h-screen bg-gray-50 flex justify-center items-center py-8">
+    <div className="w-full min-h-screen bg-gray-50 flex justify-center items-center py-8 mt-5">
       <div className="w-full max-w-xl bg-white p-6 rounded-xl shadow-lg">
         <h1 className="text-3xl font-bold text-gray-800 mb-6">{job.title}</h1>
 
