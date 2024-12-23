@@ -104,7 +104,7 @@ const JobDetails = () => {
           </div>
           <div className="p-6 border-l-4 border-blue-500 bg-gray-50 rounded-lg shadow-sm hover:shadow-md transition-shadow">
             <h2 className="font-semibold text-lg text-gray-700">ctc</h2>
-            <p className="text-gray-600">${job.ctc}</p>
+            <p className="text-gray-600">₹{job.ctc}</p>
           </div>
           <div className="p-6 border-l-4 border-blue-500 bg-gray-50 rounded-lg shadow-sm hover:shadow-md transition-shadow">
             <h2 className="font-semibold text-lg text-gray-700">Description</h2>

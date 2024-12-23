@@ -10,7 +10,7 @@ const JobCard = ({ job }) => {
       <p className="text-sm text-gray-500 mt-2 font-medium">{job.company}</p>
       <div className="mt-2 flex items-center text-sm text-gray-600">
         <span className="mr-2">📍 {job.location}</span>
-        <span>💰 ${job.ctc}</span>
+        <span>💰 ₹{job.ctc}</span>
       </div>
       <p className="text-sm text-gray-600 mt-3">{job.description}</p>
       <button
