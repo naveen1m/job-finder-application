@@ -42,4 +42,29 @@ The **Real-time Job Board Application** is a modern, web-based platform designed
 - Prioritizes security with JWT-based authentication and role-based authorization.
 - Offers a **responsive and user-friendly interface** powered by React.
 
+---
 
+## **Run Locally**
+1. Clone the project
+  ```bash
+  git clone <repo_url>
+  ```
+2. **job-finder-backend**
+
+```bash
+cd job-finder-backend
+npm install --legacy-peer-deps
+npm run dev
+```
+
+3. **job-finder-frontend**
+```bash
+cd job-finder-frontend
+npm install
+npm run dev
+```
+
+4. Update the backend URL in the frontend and access the application:
+
+    - Copy `backend url` and paste it into the  `main.jsx` in the frontend.
+    - Open the application on the browser.
