@@ -68,7 +68,9 @@ const Navbar = () => {
                   <a
                     onClick={() => {
                       localStorage.clear();
+
                       navigate("/");
+                      window.location.reload();
                     }}
                   >
                     Logout
