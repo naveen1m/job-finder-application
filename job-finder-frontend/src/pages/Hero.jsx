@@ -12,7 +12,7 @@ const Hero = () => {
       >
         <div className="hero-content text-center">
           <div className="max-w-md">
-            <div className="backdrop-blur-sm">
+            <div className="backdrop-blur-sm bg-blend-overlay rounded-full bg-opacity-50 ">
               <h1
                 className="text-6xl font-extrabold tracking-wide 
               subpixel-antialiased  leading-tight mb-4 text-[#f79256] brightness-100   "

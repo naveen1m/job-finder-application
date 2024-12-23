@@ -37,7 +37,11 @@ const MainLayout = () => {
     <>
       {showNavbar && <Navbar />}
       <div className="min-h-screen min-w-screen flex items-center justify-center bg-[#FAF9F6] ">
-        <ToastContainer position="top-right" autoClose={2000} />
+        <ToastContainer
+          position="top-right"
+          autoClose={2000}
+          transition={Slide}
+        />
         <Routes>
           <Route path="/" element={<Hero />} />
           <Route path="/login" element={<Login />} />
