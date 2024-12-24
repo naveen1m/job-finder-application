@@ -8,7 +8,7 @@ const Hero = () => {
     <div className="min-h-screen w-screen flex">
       <div
         className="hero lg:bg-[url('/homepage.jpg')]  
-      bg-[position:bottom_-1rem_center] bg-clip-content    md:bg-slate-400"
+      bg-[position:bottom_-1rem_center] bg-clip-content    md:bg-[#FAF9F6]"
       >
         <div className="hero-content text-center">
           <div className="max-w-md">
