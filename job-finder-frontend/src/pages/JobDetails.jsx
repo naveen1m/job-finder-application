@@ -117,15 +117,21 @@ const JobDetails = () => {
         {/* Apply Button */}
         {isSeeker && (
           <button
-            disabled={alreadyApplied}
+            disabled={alreadyApplied || isalreadyApplied}
             onClick={handleApply}
             className={`mt-6 px-6 py-3 ${
-              alreadyApplied ? "bg-gray-400" : "bg-blue-600"
+              alreadyApplied || isalreadyApplied ? "bg-gray-400" : "bg-blue-600"
             } text-white rounded-lg text-lg w-full transition-all duration-200 hover:${
-              alreadyApplied ? "bg-gray-500" : "bg-blue-700"
-            } ${alreadyApplied ? "cursor-not-allowed" : "cursor-pointer"}`}
+              alreadyApplied || isalreadyApplied ? "bg-gray-500" : "bg-blue-700"
+            } ${
+              alreadyApplied || isalreadyApplied
+                ? "cursor-not-allowed"
+                : "cursor-pointer"
+            }`}
           >
-            {alreadyApplied ? "Already Applied" : "Apply for Job"}
+            {alreadyApplied || isalreadyApplied
+              ? "Already Applied"
+              : "Apply for Job"}
           </button>
         )}
 
