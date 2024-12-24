@@ -24,7 +24,17 @@ const Navbar = () => {
       </div>
 
       <div className="flex items-center space-x-4 ml-auto">
-        <div className="flex justify-end">
+        <div className="flex justify-end space-x-4">
+          {token && !isSeeker && (
+            <button
+              onClick={() => {
+                navigate("/jobs");
+              }}
+              className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 ease-in delay-150 duration-200"
+            >
+              View Jobs
+            </button>
+          )}
           <button
             onClick={() => {
               navigate(!token ? "/login" : isSeeker ? "/jobs" : "/jobs/post");
