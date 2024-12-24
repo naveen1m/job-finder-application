@@ -71,7 +71,7 @@ const Navbar = () => {
                       localStorage.clear();
 
                       navigate("/");
-                      window.location.reload();
+                      // window.location.reload();
                     }}
                   >
                     Logout
