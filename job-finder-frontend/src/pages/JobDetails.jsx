@@ -40,6 +40,7 @@ const JobDetails = () => {
   const token = localStorage.getItem("token");
   const role = localStorage.getItem("role");
   const isSeeker = role === "seeker";
+  const isPoster = role === "poster";
 
   const {
     loading: appliedLoading,
@@ -115,7 +116,7 @@ const JobDetails = () => {
         </div>
 
         {/* Apply Button */}
-        {isSeeker && (
+        {!isPoster && (
           <button
             disabled={alreadyApplied || isalreadyApplied}
             onClick={handleApply}
