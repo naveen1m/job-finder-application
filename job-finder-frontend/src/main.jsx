@@ -1,17 +1,32 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import App from "./App.jsx";
-import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  createHttpLink,
+} from "@apollo/client";
+import { setContext } from "@apollo/client/link/context";
 
-const TOKEN = localStorage.getItem("token") || "token";
-// console.log("TOKEN", TOKEN);
-
-const client = new ApolloClient({
+const httpLink = createHttpLink({
   uri: "https://job-finder-backend-wb65.onrender.com/graphql",
   // uri: "http://localhost:3000/graphql",
-  headers: {
-    Authorization: `JWT ${TOKEN}`,
-  },
+});
+
+// Use setContext to dynamically add the Authorization header
+const authLink = setContext((_, { headers }) => {
+  const token = localStorage.getItem("token");
+  return {
+    headers: {
+      ...headers,
+      Authorization: token ? `JWT ${token}` : "token",
+    },
+  };
+});
+
+const client = new ApolloClient({
+  link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
 
