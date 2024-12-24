@@ -32,7 +32,7 @@ module.exports = {
           $gte: parseInt(ctcRange.split("-")[0]),
           $lte: parseInt(ctcRange.split("-")[1]),
         };
-      return await Job.find(filter);
+      return await Job.find(filter).sort({ _id: -1 });
     },
 
     getJobById: async (_, { id }) => {
