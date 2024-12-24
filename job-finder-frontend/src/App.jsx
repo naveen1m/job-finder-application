@@ -39,7 +39,7 @@ const MainLayout = () => {
       <div className="min-h-screen min-w-screen flex items-center justify-center bg-[#FAF9F6] ">
         <ToastContainer
           position="top-right"
-          autoClose={2000}
+          autoClose={1500}
           transition={Slide}
         />
         <Routes>

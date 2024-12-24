@@ -79,7 +79,7 @@ const JobPost = () => {
       });
       toast.success("Job posted successfully!", { transition: Slide });
       toast.success("An email sent to all job seekers.", { transition: Slide });
-      navigate("/profile");
+      navigate("/jobs");
     } catch (error) {
       setErrorMessage("Failed to post the job. Please try again.");
       toast.error("Failed to post!", { transition: Slide });

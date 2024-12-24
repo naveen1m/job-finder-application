@@ -30,6 +30,7 @@ const JobListing = () => {
     onCompleted: (data) => {
       setJobResults(data.getJobs);
     },
+    fetchPolicy: "network-only",
   });
 
   const handleFilterChange = (e) => {
@@ -45,11 +46,11 @@ const JobListing = () => {
   };
 
   const handleApplyFilters = async () => {
-    console.log(filters);
+    // console.log(filters);
     try {
       const { data } = await refetch({
         location: filters.location || null,
-        ctcRange: `${filters.minCTC || 0}-${filters.maxCTC || 100000}`,
+        ctcRange: `${filters.minCTC || 0}-${filters.maxCTC || 1000000000}`,
       });
       setJobResults(data.getJobs);
     } catch (error) {
