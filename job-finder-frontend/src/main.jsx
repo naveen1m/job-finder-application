@@ -10,8 +10,8 @@ import {
 import { setContext } from "@apollo/client/link/context";
 
 const httpLink = createHttpLink({
-  uri: "https://job-finder-backend-wb65.onrender.com/graphql",
-  // uri: "http://localhost:3000/graphql",
+  // uri: "https://job-finder-backend-wb65.onrender.com/graphql",
+  uri: "http://localhost:3000/graphql",
 });
 
 // Use setContext to dynamically add the Authorization header
