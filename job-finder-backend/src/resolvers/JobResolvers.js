@@ -13,26 +13,44 @@ const getAllSeekersEmails = async () => {
   const seekers = await User.find({ role: "seeker" });
   return seekers.map((seeker) => seeker.email);
 };
-const convertToTitleCase = (location) => {
-  const titleCaseLocation = location
-    ?.toLowerCase()
-    ?.split(" ")
-    ?.map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(" ");
-  return titleCaseLocation;
+
+const filterByLocation = (jobs, locationSubstring) => {
+  const matchSubstring = locationSubstring.trim().toLowerCase();
+  const fj = jobs.filter((job) => {
+    const matchLocation = job.location.trim().toLowerCase();
+
+    for (let i = 0; i < matchSubstring.length; i++) {
+      if (matchLocation[i] !== matchSubstring[i]) {
+        return false;
+      }
+    }
+    return true;
+  });
+
+  // console.log("Filtered Jobs: ", fj);
+  return fj;
 };
 module.exports = {
   Query: {
     getJobs: async (_, { location, ctcRange }) => {
-      const filter = {};
-      location = convertToTitleCase(location);
-      if (location) filter.location = location;
-      if (ctcRange)
-        filter.ctc = {
+      const ctcfilter = {};
+      let filteredJobs = [];
+
+      if (ctcRange) {
+        ctcfilter.ctc = {
           $gte: parseInt(ctcRange.split("-")[0]),
           $lte: parseInt(ctcRange.split("-")[1]),
         };
-      return await Job.find(filter).sort({ _id: -1 });
+      }
+
+      filteredJobs = await Job.find(ctcfilter).sort({ _id: -1 });
+      // filter location on matching letters in order
+
+      if (location) {
+        filteredJobs = filterByLocation(filteredJobs, location);
+      }
+
+      return await filteredJobs;
     },
 
     getJobById: async (_, { id }) => {
