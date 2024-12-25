@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useQuery } from "@apollo/client";
 import { gql } from "graphql-tag";
 import { useNavigate } from "react-router-dom";
@@ -23,6 +23,7 @@ const JobListing = () => {
     minCTC: "",
     maxCTC: "",
   });
+  const [locationFilter, setLocationFilter] = useState(null);
   const [jobResults, setJobResults] = useState([]);
 
   const { loading, error, data, refetch } = useQuery(JOB_LISTINGS_QUERY, {
@@ -33,6 +34,10 @@ const JobListing = () => {
     fetchPolicy: "network-only",
   });
 
+  useEffect(() => {
+    handleApplyFilters();
+  }, [locationFilter]);
+
   const handleFilterChange = (e) => {
     const { name, value } = e.target;
     if (name === "minCTC" || name === "maxCTC") {
@@ -42,6 +47,7 @@ const JobListing = () => {
       }
     } else {
       setFilters({ ...filters, [name]: value });
+      setLocationFilter(value);
     }
   };
 
