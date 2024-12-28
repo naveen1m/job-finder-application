@@ -5,11 +5,12 @@ The **Real-time Job Board Application** is a modern, web-based platform designed
 ---
 
 ## **Features**
-- **Job Listings**: Display available job opportunities with advanced search and filter options.
-- **User Profiles**: Manage personalized user data for both job seekers and employers.
-- **Dynamic Navigation**: Smooth transitions between sections, including job details and dashboards, using React Router.
-- **Real-time Updates**: Stay informed with instant notifications about new job postings and application statuses via GraphQL subscriptions.
-- **Secure Authentication**: JWT-based login and role-based authorization for controlled access.
+- **Authentication**: Secure login/signup with JWT and bcrypt-encrypted passwords.
+- **Job Management**: View job details, filter by location/salary, and track application status.
+- **Job Applications**: Job-seekers can apply for jobs, and job posters(Employers) receive email notifications.
+- **Job Posting**: Job-posters can create, update, and manage job listings.
+- **Notifications**: Stay informed with instant notifications about new job postings and application statuses via GraphQL subscriptions.
+- **Email Notifications**: Job-seekers are notified when new jobs are posted.
 
 ---
 
@@ -28,7 +29,7 @@ The **Real-time Job Board Application** is a modern, web-based platform designed
 
 ## **Core Functionalities**
 - **For Job Seekers**:
-  - Search and filter job listings by location, industry, and salary.
+  - Search and filter job listings by location, and salary.
   - Submit job applications and track their status in real-time.
 - **For Employers**:
   - Post job openings and manage application data.
